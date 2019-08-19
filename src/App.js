@@ -6,6 +6,9 @@ function App() {
   // state
   const [busqueda, guardarBusqueda] = useState('');
   const [imagenes, guardarImagenes] = useState([]);
+  // anadimos 2 state para calcular las paginas que necesitamos para el paginador
+  const [paginaActual, guardarPaginaActual] = useState(1);
+  const [totalPaginas, guardarTotalPaginas] = useState(1);
 
   useEffect(
     () => {
@@ -26,6 +29,14 @@ function App() {
         // console.log(resultado);
         // console.log(resultado.hits);
         guardarImagenes(resultado.hits);
+
+        // calculamos el total de paginas sera el total de imagenes dividido por el numero de imagenes por pagina:
+        // Hay q redondear hacia arriba, pq neccesitamos un integer
+        console.log(resultado.totalHits);  // total de imagenes q nos puede ensenar la busqueda
+
+        const calcularTotalPaginas = Math.ceil((resultado.totalHits / imagenesPorPagina));
+
+        guardarTotalPaginas(calcularTotalPaginas);
       }
 
       consultarApi();

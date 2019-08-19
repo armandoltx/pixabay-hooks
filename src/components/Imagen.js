@@ -20,7 +20,7 @@ const Imagen = ({imagen}) => {
         </div>
 
         <div className="card-footer">
-          <a href={largeImageURL} rel="noopener noreferrer" target="_blank" className="btn- btn-primary btn-block">Ver Imagen</a>
+          <a href={largeImageURL} rel="noopener noreferrer" target="_blank" className="btn btn-primary btn-block">Ver Imagen</a>
         </div>
       </div>
     </div>
