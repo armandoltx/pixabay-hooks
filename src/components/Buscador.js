@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Error from './Error';
 
-const Buscador = () => {
+const Buscador = ({ guardarBusquedadesdeApp }) => {
   // state para hacer la busqueda de las fotos en la API
   const [terminoBusqueda, guardarTerminobusqueda] = useState('');
   const [error, guardarError] = useState(false);
@@ -19,6 +19,7 @@ const Buscador = () => {
 
     //Enviar al componente principal
     guardarError(false);
+    guardarBusquedadesdeApp(terminoBusqueda);
 
   }
 
