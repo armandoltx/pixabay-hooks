@@ -20,7 +20,7 @@ function App() {
         const imagenesPorPagina = 30;
         const key = '13351206-b4955c7ef775c9c20c0e532d4';
 
-        const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&image_type=photo&per_page=${imagenesPorPagina}`;
+        const url = `https://pixabay.com/api/?key=${key}&q=${busqueda}&image_type=photo&per_page=${imagenesPorPagina}&page=${paginaActual}`;
 
         const respuesta = await fetch(url);
         const resultado = await respuesta.json(); // when uising fetch we need to do this way.
@@ -37,10 +37,14 @@ function App() {
         const calcularTotalPaginas = Math.ceil((resultado.totalHits / imagenesPorPagina));
 
         guardarTotalPaginas(calcularTotalPaginas);
+
+        // Mover la pantalla hacia la parte superior
+        const jumbotron = document.querySelector('.jumbotron');
+        jumbotron.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
       }
 
       consultarApi();
-    },[busqueda]);
+    }, [busqueda, paginaActual ]);
 
     // Crear las funciones para q al pulsar los botones de anterior o siguiente se cambie de pagina
 
