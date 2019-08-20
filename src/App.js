@@ -42,6 +42,22 @@ function App() {
       consultarApi();
     },[busqueda]);
 
+    // Crear las funciones para q al pulsar los botones de anterior o siguiente se cambie de pagina
+
+  const paginaAnterior = () => {
+    // calcular q numero es la pagina anterior
+    let nuevaPaginaActual = paginaActual - 1;
+    //colocarlo en el State
+    guardarPaginaActual(nuevaPaginaActual);
+  }
+
+  const paginaSiguiente = () => {
+    // calcular q numero es la pagina anterior
+    let nuevaPaginaActual = paginaActual + 1;
+    //colocarlo en el State
+    guardarPaginaActual(nuevaPaginaActual);
+  }
+
   return (
     <div className="app container">
       <div className="jumbotron">
@@ -52,6 +68,14 @@ function App() {
       <div className="row justify-content-center">
         <ListadoImagenes imagenes={imagenes}
         />
+
+        { (paginaActual === 1) ? null :(
+          <button onClick={paginaAnterior} type="button" className="btn btn-info mr-1">&laquo; Anterior</button>
+        ) }
+
+        {(paginaActual === totalPaginas) ? null : (
+          <button onClick={paginaSiguiente} type="button" className="btn btn-info">Siquiente &raquo;</button>
+        ) }
       </div>
     </div>
   );
