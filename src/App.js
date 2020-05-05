@@ -52,12 +52,18 @@ function App() {
     // calcular q numero es la pagina anterior
     let nuevaPaginaActual = paginaActual - 1;
     //colocarlo en el State
+
+    if(nuevaPaginaActual === 0) return;
+
     guardarPaginaActual(nuevaPaginaActual);
   }
 
   const paginaSiguiente = () => {
     // calcular q numero es la pagina anterior
     let nuevaPaginaActual = paginaActual + 1;
+
+    if(nuevaPaginaActual > totalPaginas) return;
+
     //colocarlo en el State
     guardarPaginaActual(nuevaPaginaActual);
   }

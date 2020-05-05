@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Error from './Error';
 
 const Buscador = ({ guardarBusquedadesdeApp }) => {
-  // state para hacer la busqueda de las fotos en la API
+  // state para hacer la busqueda de las fotos en la API sera un string pq es lo q el usuario escriba
   const [terminoBusqueda, guardarTerminobusqueda] = useState('');
   const [error, guardarError] = useState(false);
 
@@ -12,7 +12,7 @@ const Buscador = ({ guardarBusquedadesdeApp }) => {
     e.preventDefault();
 
     //validar la busqueda creamos el state error
-    if (terminoBusqueda === '') {
+    if (terminoBusqueda.trim() === '') {
       guardarError(true);
       return;
     }

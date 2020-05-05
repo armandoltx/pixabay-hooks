@@ -4,6 +4,7 @@ const Imagen = ({imagen}) => {
 
   // console.log(imagen);
 
+  // extraer las variables con destructuring
   const { largeImageURL, likes, previewURL, tags, views } = imagen;
 
 
